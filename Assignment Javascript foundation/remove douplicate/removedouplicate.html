@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+</head>
+<body>
+
+<h1>Online Shopping Cart</h1>
+
+<form id="addItemForm">
+    <label for="itemName">Item Name: </label>
+    <input type="text" id="itemName" required>
+    <button type="button" onclick="addItem()">Add to Cart</button>
+</form>
+
+<div id="cart">
+    <h2>Shopping Cart</h2>
+    <ul id="cartItems"></ul>
+</div>
+
+<script>
+    const cartItems = [];
+
+    function addItem() {
+        const itemName = document.getElementById('itemName').value;
+
+        // Check if the item is already in the cart
+        const isDuplicate = cartItems.some(item => item.name === itemName);
+
+        if (!isDuplicate) {
+            // If not a duplicate, add the item to the cart
+            const newItem = { name: itemName };
+            cartItems.push(newItem);
+            displayCart();
+        } else {
+            alert("Item already in the cart. Please choose a different item.");
+        }
+
+        // Clear the input field
+        document.getElementById('itemName').value = '';
+    }
+
+    function displayCart() {
+        const cartList = document.getElementById('cartItems');
+        cartList.innerHTML = '';
+
+        cartItems.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.textContent = item.name;
+            cartList.appendChild(listItem);
+        });
+    }
+</script>
+
+</body>
+</html>

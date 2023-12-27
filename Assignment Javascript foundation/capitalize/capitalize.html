@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Capitalizer</title>
+</head>
+<body>
+
+<h1>Name Capitalizer</h1>
+
+<form id="nameForm">
+    <label for="userName">Enter Your Name: </label>
+    <input type="text" id="userName" required>
+    <br>
+    <button type="button" onclick="capitalizeName()">Capitalize Name</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+    function capitalizeName() {
+        // Get user's name
+        const userName = document.getElementById('userName').value;
+
+        // Capitalize the first letter using the ternary operator
+        const modifiedName = (userName[0].toLowerCase() === userName[0])
+            ? userName.charAt(0).toUpperCase() + userName.slice(1)
+            : userName;
+
+        // Display the result
+        document.getElementById('result').innerHTML = `Modified Name: ${modifiedName}`;
+    }
+</script>
+
+</body>
+</html>
